@@ -27,9 +27,6 @@ export const validatePassword = (data) => {
         if(specialRegex.test(data)){
             specialCharacter = true
         }
-        console.log(number)
-        console.log(upperCase)
-        console.log(specialCharacter)
         if(upperCase && number && specialCharacter){
             return true
         } else {
