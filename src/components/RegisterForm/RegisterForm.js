@@ -3,10 +3,11 @@ import './register-form.scss';
 import {Grid, Box, TextField, FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
 import CustomButton from '../CustomButton/CustomButton';
 import DateFnsUtils from '@date-io/date-fns';
-import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers';
+import {MuiPickersUtilsProvider, KeyboardDatePicker, validate} from '@material-ui/pickers';
 import {countries} from 'country-data-list';
 import avatar from '../../assets/images/avatar.jpg';
 import { validateEmail, validateName, validatePassword } from '../../helpers/validations';
+import { useHistory } from 'react-router-dom';
 
 const LoginForm = (props) => {
     const [firstName, setFirstName] = useState("")
@@ -23,6 +24,7 @@ const LoginForm = (props) => {
     const [firstNameError, setFirstNameError] = useState(false)
     const [LastNameError, setLastNameError] = useState(false)
     const inputLabel = React.useRef(null);
+    const history = useHistory()
 
     useEffect(() => {
         document.title = "Registeration Form"
@@ -73,7 +75,23 @@ const LoginForm = (props) => {
     }
 
     const handleSubmit = () => {
-
+        if(validateName(firstName)){
+            if(validateName(lastName)){
+                if(validateEmail(email)){
+                    if(validatePassword(password)){
+                        history.push('/thankyou')
+                    } else {
+                        setPasswordError(true)
+                    }
+                } else {
+                    setEmailError(true)
+                }
+            } else{
+                setLastNameError(true)
+            }
+        } else {
+            setFirstNameError(true)
+        }
     }
 
     const handleKeyDown = (event) => {

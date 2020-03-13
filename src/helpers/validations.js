@@ -41,7 +41,7 @@ export const validatePassword = (data) => {
 }
 
 export const validateName = (data) => {
-    if(data && data.lenght >= 3){
+    if(data && data.length >= 3){
         return true
     } else{
         return false
