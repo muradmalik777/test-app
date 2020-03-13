@@ -6,6 +6,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers';
 import {countries} from 'country-data-list';
 import avatar from '../../assets/images/avatar.jpg';
+import { validateEmail, validateName, validatePassword } from '../../helpers/validations';
 
 const LoginForm = (props) => {
     const [firstName, setFirstName] = useState("")
@@ -31,7 +32,7 @@ const LoginForm = (props) => {
 
     const onFirstNameChange = (e) => {
         setFirstName(e.target.value)
-        if(e.target.value && e.target.value.length >= 3){
+        if(validateName(e.target.value)){
             setFirstNameError(false)
         } else {
             setFirstNameError(true)
@@ -39,7 +40,7 @@ const LoginForm = (props) => {
     }
     const onLastNameChange = (e) => {
         setLastName(e.target.value)
-        if(e.target.value && e.target.value.length >= 3){
+        if(validateName(e.target.value)){
             setLastNameError(false)
         } else {
             setLastNameError(true)
@@ -48,11 +49,19 @@ const LoginForm = (props) => {
 
     const onEmailChange = (e) => {
         setEmail(e.target.value)
-        !e.target.value ? setEmailError(true) : setEmailError(false)
+        if(validateEmail(e.target.value)){
+            setEmailError(false)
+        } else {
+            setEmailError(true)
+        }
     }
     const onPasswordChange = (e) => {
         setPassword(e.target.value)
-        !e.target.value ? setPasswordError(true) : setPasswordError(false)
+        if(validatePassword(e.target.value)){
+            setPasswordError(false)
+        } else{
+            setPasswordError(true)
+        }
     }
 
     const avatarChange = (e) => {
@@ -118,7 +127,7 @@ const LoginForm = (props) => {
                         variant="outlined"
                         onChange={onEmailChange}
                         onKeyDown={handleKeyDown} />
-                    {emailError && <span className="error-text">Email is required</span>}
+                    {emailError && <span className="error-text">Email is required and should be valid</span>}
                 </Grid>
                 <Grid item xs={6}>
                     <TextField
@@ -132,7 +141,7 @@ const LoginForm = (props) => {
                         variant="outlined"
                         onChange={onPasswordChange}
                         onKeyDown={handleKeyDown} />
-                    {passwordError && <span className="error-text">Password is required</span>}
+                    {passwordError && <span className="error-text">Password is required, at least 8 Characters, 1 uppercase, 1 number and 1 special character</span>}
                 </Grid>
                 <Grid item xs={6}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
