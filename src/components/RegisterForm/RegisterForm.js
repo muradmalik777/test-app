@@ -24,8 +24,6 @@ const LoginForm = (props) => {
     const [LastNameError, setLastNameError] = useState(false)
     const inputLabel = React.useRef(null);
 
-    console.log(countries.all)
-
     useEffect(() => {
         document.title = "Registeration Form"
     }, [])
@@ -86,7 +84,7 @@ const LoginForm = (props) => {
 
     return (
         <Grid container justify="space-between" className="register-form">
-            <Grid item={8} container spacing={2} justify="flex-start" wrap="wrap" className="form">
+            <Grid item xs={8} container spacing={2} justify="flex-start" wrap="wrap" className="form">
                 <Grid item xs={6}>
                     <TextField
                         fullWidth
@@ -203,7 +201,7 @@ const LoginForm = (props) => {
                 </Box>
             </Grid>
             <Grid item container justify="center" xs={12}>
-                <CustomButton loading={props.loading} disabled={props.loading} className="submit-btn" onClick={handleSubmit}>Sign up</CustomButton>
+                <CustomButton loading={props.loading} disabled={props.loading} className="submit-btn" onClick={handleSubmit}>Register</CustomButton>
             </Grid>
         </Grid>
     )
