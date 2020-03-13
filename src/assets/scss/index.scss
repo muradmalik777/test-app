@@ -1,0 +1,63 @@
+@import './fonts.scss';
+@import './variables.scss';
+
+body {
+  margin: 0;
+  font-family: 'Freight-Light';
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Freight-Medium' !important;
+  font-weight: 500 !important;
+}
+
+.custom-input{
+  width: 100%;
+  margin: 0 !important;
+  height: 55px;
+  background: $grey;
+  border-radius: $radiusSmall;
+  fieldset{border-color: transparent;}
+  input{
+      padding: 0 1rem;
+  }
+  div{
+      height: 55px;
+      &:before, &:after{
+          display: none !important;
+      }
+  }
+  &.date{
+    label{
+      margin-left: .75rem;
+    }
+  }
+}
+
+.select-input{
+  div{
+      border-radius: $radiusSmall;
+      height: 55px !important;
+      max-height: 55px !important;
+      padding-left: .5rem !important;
+      padding-top: 1rem !important;
+      padding-bottom: 0 !important;
+      padding-right: 0 !important;
+
+      &:before, &:after{
+          display: none !important;
+          border: none !important;
+      }
+  }
+  &:active{
+      div{
+          padding: 0 !important;
+      }
+  }
+}
+
+.box-title{
+  text-transform: uppercase;
+  font-size: 36px;
+  font-family: 'Freight-Medium';
+}

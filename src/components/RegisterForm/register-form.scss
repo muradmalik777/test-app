@@ -1,0 +1,41 @@
+@import '../../assets/scss/variables.scss';
+
+.register-form{
+    width: 750px !important;
+
+    .form{
+        width: 500px;
+        .error-text{
+            color: $red;
+            font-size: 12px;
+        }
+    }
+
+    .image-upload{
+        .avatar{
+            width: 200px;
+            height: 200px;
+            border-radius: $radiusSmall;
+            margin-bottom: 1rem;
+        }
+        .image-upload-actions{
+            label{
+                font-size: 16px;
+                min-width: 120px !important;
+                text-transform: capitalize !important;
+                cursor: pointer !important;
+                background: $primary;
+                color: $white;
+                padding: .5rem 1rem;
+                border-radius: $radiusSmall;
+                &:hover{background: $primary;}
+            }
+            input{display: none;}
+        }
+    }
+
+    .submit-btn{
+        margin-top: 2rem;
+        height: 50px;
+    }
+}
